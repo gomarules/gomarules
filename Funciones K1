@@ -1,0 +1,66 @@
+unc Admisn
+
+describe('Login',function(){
+
+  it('insert user',function(){
+    cy.visit('http://192.168.10.70/auth/login');
+    cy.get('[name="email"]').type('omer');
+    cy.get('[name="password"]').type('1qaz2wsx');
+    cy.get('#loginFormBtnLocal').click();
+    cy.wait(3000);
+    cy.get('.app-sidebar-after > .list-none > li.ng-star-inserted > .p-ripple', { timeout: 30000 }).should('be.visible').click();
+    cy.wait(3000);
+    cy.get('.tabs-container > :nth-child(2)', { timeout: 30000 }).should('be.visible').click();
+    cy.wait(3000);
+    cy.get('.tabs-container > :nth-child(3)', { timeout: 30000 }).should('be.visible').click();
+    cy.wait(3000);
+    cy.get('.app-sidebar-after > :nth-child(3) > .p-ripple', { timeout: 10000 }).should('be.visible').click();
+  });
+   
+});
+
+FUNCN CAM
+
+describe('Login',function(){
+
+  it('insert user',function(){
+    cy.visit('http://192.168.10.70/auth/login');
+    cy.get('[name="email"]').type('omer');
+    cy.get('[name="password"]').type('1qaz2wsx');
+    cy.get('#loginFormBtnLocal').click();
+    cy.wait(5000);
+    cy.get('.list-none > :nth-child(3) > .p-ripple', { timeout: 30000 }).should('be.visible').click();
+    cy.wait(5000);
+    cy.get('.layout-buttons-left > :nth-child(2)', { timeout: 30000 }).should('be.visible').click();
+    cy.wait(5000);
+    cy.get(':nth-child(1) > .cdk-drag > .icon-text-container', { timeout: 30000 }).should('be.visible').dblclick({ force: true });
+    cy.wait(5000);
+    cy.get(':nth-child(3) > .cdk-drag > .icon-text-container', { timeout: 30000 }).should('be.visible').dblclick({ force: true });
+    cy.wait(500000);
+    cy.get('.app-sidebar-after > :nth-child(3) > .p-ripple', { timeout: 10000 }).should('be.visible').click();
+  });
+   
+});
+
+FUNC SIDE 
+
+describe('Login',function(){
+
+  it('insert user',function(){
+    cy.visit('http://192.168.10.70/auth/login');
+    cy.get('[name="email"]').type('omer');
+    cy.get('[name="password"]').type('1qaz2wsx');
+    cy.get('#loginFormBtnLocal').click();
+    cy.wait(5000);
+    cy.get('.app-sidebar-section > .list-none > :nth-child(1) > .p-ripple', { timeout: 30000 }).should('be.visible').click();
+    cy.wait(5000);
+    cy.get('.app-sidebar-section > .list-none > :nth-child(3) > .p-ripple', { timeout: 30000 }).should('be.visible').click();
+    cy.wait(5000);
+    cy.get('.app-sidebar-section > .list-none > :nth-child(2) > .p-ripple', { timeout: 30000 }).should('be.visible').click();
+    cy.wait(5000);
+    cy.get('.app-sidebar-before > .list-none > li.ng-star-inserted > .p-ripple').click();
+    stop();
+  });
+   
+});
+
