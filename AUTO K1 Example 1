@@ -1,0 +1,45 @@
+describe('template spec', () => {
+  beforeEach(() => {
+    cy.on('uncaught:exception', (err) => {
+      if (err.message.includes('attachShadow')) return false;
+    });
+  });
+
+  it('passes', () => {
+    cy.visit('https://k1.promad-qa.telmex.cloud-vms.com/auth/login');
+    cy.get('[name="email"]').type('jorge');
+    cy.get('[name="password"]').type('1qaz2wsx');
+    cy.get('#loginFormBtnLocal').click();
+    cy.wait(8000);
+    cy.get('.list-none > :nth-child(3) > .p-ripple').click();
+    cy.wait(3000);
+    cy.get(':nth-child(2) > .text-wrapper').click();
+    cy.wait(3000);
+    cy.get(':nth-child(1) > .cdk-drag').should('be.visible').dblclick({ force: true });
+    cy.wait(3000);
+    cy.get(':nth-child(2) > .cdk-drag').should('be.visible').dblclick({ force: true });
+    cy.wait(3000);
+    cy.get(':nth-child(5) > .cdk-drag').should('be.visible').dblclick({ force: true });
+    cy.wait(3000);
+    cy.get(':nth-child(3) > .cdk-drag').should('be.visible').dblclick({ force: true });
+    cy.wait(3000);
+    cy.get(':nth-child(1) > .text-wrapper').should('be.visible').dblclick({ force: true });
+    cy.wait(3000);
+    cy.get('.control-icon > img', { timeout: 10000 }).should('be.visible').click();
+    cy.wait(3000);
+    cy.get('.allvideotags').rightclick();
+    cy.get('[id="1"] > .p-menuitem-content > .p-ripple').click();
+    cy.wait(3000);
+    cy.get('.cloudplayer-get-clip').click();
+    cy.wait(1000);
+    cy.get('.clipbefore').clear({ force: true });
+    cy.wait(1000);
+    cy.get('.clipafter').clear({ force: true });
+    cy.wait(1000);
+    cy.get('.clipbefore').type('1', { force: true });
+    cy.wait(1000);
+    cy.get('.clipafter').type('1', { force: true });
+    cy.get('.clipcreatebtn').click();
+     cy.wait(10000);
+  });
+});
