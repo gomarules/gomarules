@@ -1,0 +1,33 @@
+import { test } from '@playwright/test';
+import * as fs from 'fs';
+
+// Leer el archivo JSON
+const usuarios = JSON.parse(
+  fs.readFileSync('C:/data/usuarios.json', 'utf-8')
+);
+
+for (const usuario of usuarios) {
+
+  test(`Formulario - ${usuario.name}`, async ({ page }) => {
+
+    await page.goto('https://practice-automation.com/form-fields/', {
+      waitUntil: 'domcontentloaded'
+    });
+
+    // Llenar datos
+    await page.getByLabel('Name', { exact: true }).fill(usuario.name);
+    await page.getByLabel('Password', { exact: true }).fill(usuario.password);
+
+    // Seleccionar opciones
+    await page.getByTestId('drink1').check();
+    await page.getByTestId('color3').check();
+
+    // Enviar formulario
+    await page.getByTestId('submit-btn').click();
+
+    // Esperar un momento para ver el resultado (opcional)
+    await page.waitForTimeout(2000);
+
+  });
+
+}
