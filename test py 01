@@ -1,0 +1,14 @@
+import { test, expect } from '@playwright/test';
+
+test('ejemplo 01', async ({ page }) => {
+  await page.goto('https://www.elfinanciero.com.mx/', { waitUntil: 'domcontentloaded' });
+
+  await page.getByRole('link', { name: 'Mercados', exact: true }).first().click();
+  await expect(page).toHaveURL(/mercados/);
+   await page.waitForTimeout(5000);
+  await page.getByRole('link', { name: 'Nacional', exact: true }).first().click();
+  await expect(page).toHaveURL(/nacional/);
+   await page.waitForTimeout(5000);
+  await page.getByRole('link', { name: 'Deportes', exact: true }).first().click();
+  await expect(page).toHaveURL(/deportes/);
+});
